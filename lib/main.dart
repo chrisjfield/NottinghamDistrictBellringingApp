@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import './pageLayout/PageScaffold.dart';
 
 void main() => runApp(new MyApp());
 
 class Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Text(
-      'hello world',
-    ));
+    return PageScaffold(
+        titleText: 'Towers',
+        child: Center(
+            child: Text(
+          'hello world',
+        )));
   }
 }
 
@@ -33,58 +36,12 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      drawer: new Drawer(
-        child: new ListView(
-          children: <Widget>[
-            new DrawerHeader(
-              child: Image(
-                image: AssetImage('images/SouthallMinster.jpg'),
-                fit: BoxFit.cover,
-              ),
-              padding: EdgeInsets.zero,
-            ),
-            new ListTile(
-              leading: const Icon(Icons.home),
-              title: new Text('Home'),
-              onTap: () {
-                Navigator.pushNamed(context, '/');
-              },
-            ),
-            new Divider(),
-            new ListTile(
-              leading: const Icon(Icons.location_city),
-              title: new Text('Towers'),
-              onTap: () {
-                Navigator.pushNamed(context, "Page");
-              },
-            ),
-            new Divider(),
-            new ListTile(
-              leading: const Icon(Icons.notifications),
-              title: new Text('Performances'),
-              onTap: () {},
-            ),
-            new Divider(),
-            new ListTile(
-              leading: const Icon(Icons.event),
-              title: new Text('Events'),
-              onTap: () {},
-            ),
-            new Divider(),
-          ],
-        ),
-      ),
-      appBar: new AppBar(
-        title: new Text('home'),
-      ),
-      body: new Center(
+    return PageScaffold(
+      titleText: 'home',
+      child: new Center(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Text(
-              'You have pushed the button this many times:',
-            ),
             new Text(
               'home',
               style: Theme.of(context).textTheme.display1,
