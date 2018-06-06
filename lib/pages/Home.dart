@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'home',
+            'hello world - Home',
             style: Theme.of(context).textTheme.display1,
           ),
         ],
@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
     );
 
     return PageScaffold(
-      titleText: 'home',
+      titleText: 'Home',
       child: home,
     );
   }

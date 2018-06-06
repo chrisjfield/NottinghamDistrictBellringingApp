@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/RoutesEnum.dart';
 
 class PageDrawer extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class PageDrawer extends StatelessWidget {
             leading: const Icon(Icons.home),
             title: Text('Home'),
             onTap: () {
-              Navigator.popAndPushNamed(context, '/');
+              Navigator.popAndPushNamed(context, RoutesEnum.home);
             },
           ),
           Divider(),
@@ -25,20 +26,24 @@ class PageDrawer extends StatelessWidget {
             leading: const Icon(Icons.location_city),
             title: Text('Towers'),
             onTap: () {
-              Navigator.popAndPushNamed(context, "Page");
+              Navigator.popAndPushNamed(context, RoutesEnum.towers);
             },
           ),
           Divider(),
           ListTile(
             leading: const Icon(Icons.notifications),
             title: Text('Performances'),
-            onTap: () {},
+            onTap: () {
+              Navigator.popAndPushNamed(context, RoutesEnum.performances);
+            },
           ),
           Divider(),
           ListTile(
             leading: const Icon(Icons.event),
             title: Text('Events'),
-            onTap: () {},
+            onTap: () {
+              Navigator.popAndPushNamed(context, RoutesEnum.events);
+            },
           ),
           Divider(),
         ],
