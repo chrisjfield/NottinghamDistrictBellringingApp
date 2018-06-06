@@ -17,7 +17,7 @@ class PageDrawer extends StatelessWidget {
             leading: const Icon(Icons.home),
             title: Text('Home'),
             onTap: () {
-              Navigator.pushNamed(context, '/');
+              Navigator.popAndPushNamed(context, '/');
             },
           ),
           Divider(),
@@ -25,7 +25,7 @@ class PageDrawer extends StatelessWidget {
             leading: const Icon(Icons.location_city),
             title: Text('Towers'),
             onTap: () {
-              Navigator.pushNamed(context, "Page");
+              Navigator.popAndPushNamed(context, "Page");
             },
           ),
           Divider(),
