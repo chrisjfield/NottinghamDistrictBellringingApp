@@ -17,34 +17,22 @@ class Towers extends StatelessWidget {
 
   Widget _getTowerList(BuildContext context) {
     return ListView(
-      children: <Widget>[
-        ListTile(
-          title: Center(child: Text('Nottingham All Saints')),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    TowerDetails(towerDetails: 'Nottingham All Saints'),
-              ),
-            );
-          },
-        ),
-        Divider(),
-        ListTile(
-          title: Center(child: Text('Nottingham St Peters')),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    TowerDetails(towerDetails: 'Nottingham St Peters'),
-              ),
-            );
-          },
-        ),
-        Divider(),
-      ],
+      children: towerList
+          .map((TowerDetail towerDetail) => ListTile(
+                title: Center(child: Text(towerDetail.name)),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TowerDetails(
+                            key: Key("tower1"),
+                            towerDetails: towerDetail,
+                          ),
+                    ),
+                  );
+                },
+              ))
+          .toList(),
     );
   }
 
