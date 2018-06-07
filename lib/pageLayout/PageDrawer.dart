@@ -31,7 +31,7 @@ class PageDrawer extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            leading: const Icon(Icons.notifications),
+            leading: const Icon(Icons.music_note),
             title: Text('Performances'),
             onTap: () {
               Navigator.popAndPushNamed(context, RoutesEnum.performances);

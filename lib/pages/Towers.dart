@@ -8,10 +8,26 @@ class Towers extends StatelessWidget {
     TowerDetail(
       imageLocation: "images/NottinghamAllSaints.jpg",
       name: "Nottingham All Saints",
+      email: "master@nuscr.org",
+      phoneNumber: "07446388494",
+      doveID: "NOTTINGM+A",
+      numberOfBells: "8",
+      postcode: "NG7 4DL",
+      practiseTime: "Tue 19:00-20:30",
+      serviceTime: "Sun 10:00-10:30",
+      weight: "16-1-3",
     ),
     TowerDetail(
       imageLocation: "images/NottinghamStPeters.jpg",
       name: "Nottingham St Peters",
+      email: "nottingham_st_peter@southwelldg.org.uk",
+      phoneNumber: "07446388494",
+      doveID: "NOTTINGM+P",
+      numberOfBells: "12",
+      postcode: "NG1 7DA",
+      practiseTime: "Thu 19:45-21:00",
+      serviceTime: "Sun 16:00-17:00",
+      weight: "16-1-3",
     ),
   ];
 
@@ -38,8 +54,6 @@ class Towers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Widget a = _getTowerList(context);
-
     return PageScaffold(
       titleText: 'Towers',
       child: _getTowerList(context),
