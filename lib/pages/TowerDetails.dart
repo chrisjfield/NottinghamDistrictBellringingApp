@@ -129,14 +129,100 @@ class TowerDetails extends StatelessWidget {
     );
   }
 
+  Widget _getDetailsSection(TowerDetail towerDetails) {
+    return Container(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 10.0),
+          ),
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 40.0),
+              ),
+              Text(
+                'Tower Details',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 10.0),
+          ),
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 80.0),
+              ),
+              Expanded(
+                child: Text("bells: " + towerDetails.numberOfBells),
+              ),
+              Expanded(
+                child: Text("weight: " + towerDetails.weight),
+              ),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 25.0),
+          ),
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 40.0),
+              ),
+              Text(
+                'Ringing Details',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+            mainAxisAlignment: MainAxisAlignment.start,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 10.0),
+          ),
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 80.0),
+              ),
+              Column(
+                children: [
+                  Text("Practise: " + towerDetails.practiseTime),
+                  Padding(
+                    padding: EdgeInsets.only(top: 5.0),
+                  ),
+                  Text("Service: " + towerDetails.serviceTime),
+                ],
+                crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+            ],
+            mainAxisAlignment: MainAxisAlignment.start,
+          )
+        ],
+      ),
+    );
+  }
+
   Widget _getTowerDetails(BuildContext context, TowerDetail towerDetails) {
     return ListView(
       children: [
         Image.asset(
           towerDetails.imageLocation,
+          height: 240.0,
           fit: BoxFit.cover,
         ),
         _getButtonSection(context, towerDetails),
+        _getDetailsSection(towerDetails),
       ],
     );
   }
