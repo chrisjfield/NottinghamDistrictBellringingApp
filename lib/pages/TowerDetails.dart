@@ -162,10 +162,10 @@ class TowerDetails extends StatelessWidget {
                 padding: EdgeInsets.only(left: 80.0),
               ),
               Expanded(
-                child: Text("bells: " + towerDetails.numberOfBells),
+                child: Text("Bells: " + towerDetails.numberOfBells),
               ),
               Expanded(
-                child: Text("weight: " + towerDetails.weight),
+                child: Text("Weight: " + towerDetails.weight),
               ),
             ],
           ),

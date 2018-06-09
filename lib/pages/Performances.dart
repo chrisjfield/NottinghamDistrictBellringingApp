@@ -1,14 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:xml/xml.dart' as xml;
 
 import '../pageLayout/PageScaffold.dart';
 import '../models/PerformanceDetail.dart';
+import 'PerformanceDetails.dart';
 
 class Performances extends StatelessWidget {
-  Future<http.Response> fetchPerformances() async {
+  Future<List<PerformanceDetail>> fetchPerformances() async {
     final response = await http.get(
         'https://bb.ringingworld.co.uk/export.php?fmt=xml&place=Beeston|Nottingham&pagesize=10&page=1');
 
@@ -22,20 +24,25 @@ class Performances extends StatelessWidget {
     performancesXml.forEach(
         (element) => performances.add(_getPerformanceFromXML(element)));
 
-    return response;
+    return performances;
   }
 
   PerformanceDetail _getPerformanceFromXML(xml.XmlElement element) {
     return PerformanceDetail(
-        bellboardId: _getXMLElementAttribute(element, "id"),
-        association: _getXMLNodeValue(element, "association"),
-        changes: _getXMLNodeValue(element, "changes"),
-        date: _getXMLNodeValue(element, "date"),
-        duration: _getXMLNodeValue(element, "duration"),
-        footnote: _getXMLNodeValue(element, "footnote"),
-        method: _getXMLNodeValue(element, "method"),
-        place: _getXMLNodeValue(element, "place-name"),
-        ringers: _getRingers(element));
+      bellboardId: _getXMLElementAttribute(element, "id"),
+      association: _getXMLNodeValue(element, "association"),
+      changes: _getXMLNodeValue(element, "changes"),
+      date: _getXMLNodeValue(element, "date"),
+      duration: _getXMLNodeValue(element, "duration"),
+      footnote: _getXMLNodeValue(element, "footnote"),
+      method: _getXMLNodeValue(element, "method"),
+      place: _getXMLNodeByNameAndAttributeValue(
+              element, "place-name", "type", "place") +
+          " " +
+          _getXMLNodeByNameAndAttributeValue(
+              element, "place-name", "type", "dedication"),
+      ringers: _getRingers(element),
+    );
   }
 
   List<String> _getRingers(xml.XmlElement element) {
@@ -56,6 +63,18 @@ class Performances extends StatelessWidget {
     }
 
     return "$bell: $ringerName";
+  }
+
+  String _getXMLNodeByNameAndAttributeValue(xml.XmlElement element,
+      String nodeName, String attributeName, String attributeValue) {
+    String combinedResult = element
+        .findAllElements(nodeName)
+        .where((node) =>
+            node.name.toString() == nodeName &&
+            _getXMLElementAttribute(node, attributeName) == attributeValue)
+        .fold("", (prev, node) => prev + node.text + "\n");
+
+    return combinedResult.trimRight();
   }
 
   String _getXMLNodeValue(xml.XmlElement element, String nodeName) {
@@ -82,17 +101,56 @@ class Performances extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       titleText: 'Performances',
-      child: FutureBuilder<http.Response>(
+      child: FutureBuilder<List<PerformanceDetail>>(
         future: fetchPerformances(),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return new Text("it worked");
+          if (snapshot.hasData && snapshot.data.length == 0) {
+            return Text("No performaces to show");
+          } else if (snapshot.hasData) {
+            return ListView.builder(
+              itemBuilder: (BuildContext context, int index) => ListTile(
+                    title: Text(snapshot.data[index].place),
+                    subtitle: Text(snapshot.data[index].changes +
+                        " " +
+                        snapshot.data[index].method),
+                    leading: Text(
+                      DateFormat
+                          .MMMd("en_US")
+                          .format(DateTime.parse(snapshot.data[index].date)),
+                      style: TextStyle(
+                        fontSize: 12.0,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PerformanceDetails(
+                                key: Key("performance1"),
+                                performanceDetails: snapshot.data[index],
+                              ),
+                        ),
+                      );
+                    },
+                  ),
+              itemCount: snapshot.data.length,
+            );
           } else if (snapshot.hasError) {
-            return new Text("${snapshot.error}");
+            return Text("${snapshot.error}");
           }
 
           // By default, show a loading spinner
-          return new CircularProgressIndicator();
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(),
+                ],
+              )
+            ],
+          );
         },
       ),
     );

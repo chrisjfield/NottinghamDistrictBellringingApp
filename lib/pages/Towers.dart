@@ -27,7 +27,7 @@ class Towers extends StatelessWidget {
       postcode: "NG1 7DA",
       practiseTime: "Thu 19:45-21:00",
       serviceTime: "Sun 16:00-17:00",
-      weight: "16-1-3",
+      weight: "22-2-5",
     ),
   ];
 
