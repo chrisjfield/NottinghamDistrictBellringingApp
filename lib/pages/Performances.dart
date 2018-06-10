@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
@@ -16,6 +17,7 @@ class Performances extends StatefulWidget {
 class PerformancesState extends State<StatefulWidget> {
   final List<PerformanceDetail> _performances = List<PerformanceDetail>();
   int _pageNumber = 1;
+  bool _loading = false;
 
   void fetchPerformances() async {
     final response = await http.get(
@@ -32,6 +34,7 @@ class PerformancesState extends State<StatefulWidget> {
 
     setState(() {
       _pageNumber += 1;
+      _loading = false;
     });
   }
 
@@ -122,34 +125,64 @@ class PerformancesState extends State<StatefulWidget> {
       return Text("No performaces to show");
     } else {
       return ListView.builder(
-        itemBuilder: (BuildContext context, int index) => ListTile(
-              title: Text(_performances[index].place),
-              subtitle: Text(_performances[index].changes +
-                  " " +
-                  _performances[index].method),
-              leading: Text(
-                DateFormat
-                    .MMMd("en_US")
-                    .format(DateTime.parse(_performances[index].date)),
-                style: TextStyle(
-                  fontSize: 12.0,
-                ),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PerformanceDetails(
-                          key: Key("performance1"),
-                          performanceDetails: _performances[index],
-                        ),
-                  ),
-                );
-              },
-            ),
-        itemCount: _performances.length,
+        itemBuilder: (BuildContext context, int index) => _getListTime(index),
+        itemCount: _performances.length + 1,
       );
     }
+  }
+
+  ListTile _getListTime(int index) {
+    final Widget finalTile =
+        _loading ? CircularProgressIndicator() : Text("View More");
+
+    if (index < _performances.length) {
+      return ListTile(
+        title: Text(_performances[index].place),
+        subtitle: Text(
+            _performances[index].changes + " " + _performances[index].method),
+        leading: Text(
+          DateFormat
+              .MMMd("en_US")
+              .format(DateTime.parse(_performances[index].date)),
+          style: TextStyle(
+            fontSize: 12.0,
+          ),
+        ),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PerformanceDetails(
+                    key: Key("performance1"),
+                    performanceDetails: _performances[index],
+                  ),
+            ),
+          );
+        },
+      );
+    } else {
+      return ListTile(
+          title: Center(
+            child: finalTile,
+          ),
+          onTap: () => _getMorePerformances());
+    }
+  }
+
+  _getMorePerformances() {
+    setState(() {
+      _loading = true;
+    });
+    fetchPerformances();
+  }
+
+  Future<Null> _refresh() async {
+    setState(() {
+      _pageNumber = 1;
+      _performances.clear();
+    });
+
+    return null;
   }
 
   @override
@@ -160,7 +193,10 @@ class PerformancesState extends State<StatefulWidget> {
 
     return PageScaffold(
       titleText: 'Performances',
-      child: _getPerformaceWidget(),
+      child: RefreshIndicator(
+        child: _getPerformaceWidget(),
+        onRefresh: _refresh,
+      ),
     );
   }
 }
