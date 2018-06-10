@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
@@ -9,22 +8,31 @@ import '../pageLayout/PageScaffold.dart';
 import '../models/PerformanceDetail.dart';
 import 'PerformanceDetails.dart';
 
-class Performances extends StatelessWidget {
-  Future<List<PerformanceDetail>> fetchPerformances() async {
+class Performances extends StatefulWidget {
+  @override
+  PerformancesState createState() => PerformancesState();
+}
+
+class PerformancesState extends State<StatefulWidget> {
+  final List<PerformanceDetail> _performances = List<PerformanceDetail>();
+  int _pageNumber = 1;
+
+  void fetchPerformances() async {
     final response = await http.get(
-        'https://bb.ringingworld.co.uk/export.php?fmt=xml&place=Beeston|Nottingham&pagesize=10&page=1');
+        "https://bb.ringingworld.co.uk/export.php?fmt=xml&place=Beeston|Nottingham&pagesize=10&page=${_pageNumber.toString()}");
 
     String string = utf8.decode(response.bodyBytes);
     xml.XmlDocument document = xml.parse(string);
     Iterable<xml.XmlElement> performancesXml =
         document.findElements('performances').first.findElements('performance');
 
-    List<PerformanceDetail> performances = List<PerformanceDetail>();
+    performancesXml.forEach((element) => setState(() {
+          _performances.add(_getPerformanceFromXML(element));
+        }));
 
-    performancesXml.forEach(
-        (element) => performances.add(_getPerformanceFromXML(element)));
-
-    return performances;
+    setState(() {
+      _pageNumber += 1;
+    });
   }
 
   PerformanceDetail _getPerformanceFromXML(xml.XmlElement element) {
@@ -97,62 +105,62 @@ class Performances extends StatelessWidget {
     return attribute.value;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return PageScaffold(
-      titleText: 'Performances',
-      child: FutureBuilder<List<PerformanceDetail>>(
-        future: fetchPerformances(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData && snapshot.data.length == 0) {
-            return Text("No performaces to show");
-          } else if (snapshot.hasData) {
-            return ListView.builder(
-              itemBuilder: (BuildContext context, int index) => ListTile(
-                    title: Text(snapshot.data[index].place),
-                    subtitle: Text(snapshot.data[index].changes +
-                        " " +
-                        snapshot.data[index].method),
-                    leading: Text(
-                      DateFormat
-                          .MMMd("en_US")
-                          .format(DateTime.parse(snapshot.data[index].date)),
-                      style: TextStyle(
-                        fontSize: 12.0,
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PerformanceDetails(
-                                key: Key("performance1"),
-                                performanceDetails: snapshot.data[index],
-                              ),
-                        ),
-                      );
-                    },
-                  ),
-              itemCount: snapshot.data.length,
-            );
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-
-          // By default, show a loading spinner
-          return Row(
+  _getPerformaceWidget() {
+    if (_pageNumber == 1) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(),
-                ],
-              )
+              CircularProgressIndicator(),
             ],
-          );
-        },
-      ),
+          )
+        ],
+      );
+    } else if (_performances.length == 0) {
+      return Text("No performaces to show");
+    } else {
+      return ListView.builder(
+        itemBuilder: (BuildContext context, int index) => ListTile(
+              title: Text(_performances[index].place),
+              subtitle: Text(_performances[index].changes +
+                  " " +
+                  _performances[index].method),
+              leading: Text(
+                DateFormat
+                    .MMMd("en_US")
+                    .format(DateTime.parse(_performances[index].date)),
+                style: TextStyle(
+                  fontSize: 12.0,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PerformanceDetails(
+                          key: Key("performance1"),
+                          performanceDetails: _performances[index],
+                        ),
+                  ),
+                );
+              },
+            ),
+        itemCount: _performances.length,
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_pageNumber == 1) {
+      fetchPerformances();
+    }
+
+    return PageScaffold(
+      titleText: 'Performances',
+      child: _getPerformaceWidget(),
     );
   }
 }
