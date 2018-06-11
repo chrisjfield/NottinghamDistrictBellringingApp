@@ -17,6 +17,21 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/SouthallMinster.jpg
-    - images/NottinghamAllSaints.jpg
-    - images/NottinghamStPeters.jpg
+    - images/Arnold.jpg
+    - images/Aspley.jpg
+    - images/Attenborough.jpg
+    - images/Basford.jpg
+    - images/Beeston.jpg
+    - images/Bramcote.jpg
+    - images/Bulwell.jpg
+    - images/Daybrook.jpg
+    - images/Lenton.jpg
+    - images/Nottingham_All_Saints.jpg
+    - images/Nottingham_St_Marys.jpg
+    - images/Nottingham_St_Peters.jpg
+    - images/Nuthall.jpg
+    - images/Southall_Minster.jpg
+    - images/Stapleford.jpg
+    - images/Trowell.jpg
+    - images/West_Bridgeford.jpg
+    - images/Wollaton.jpg

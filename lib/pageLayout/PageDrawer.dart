@@ -9,7 +9,7 @@ class PageDrawer extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             child: Image(
-              image: AssetImage('images/SouthallMinster.jpg'),
+              image: AssetImage('images/Southall_Minster.jpg'),
               fit: BoxFit.cover,
             ),
             padding: EdgeInsets.zero,

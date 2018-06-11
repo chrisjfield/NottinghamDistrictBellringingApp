@@ -60,7 +60,7 @@ class TowerDetails extends StatelessWidget {
                 onPressed: () => _launchURL("mailto:" +
                     towerDetails.email +
                     "?subject=Bellinging at " +
-                    towerDetails.name),
+                    towerDetails.place),
               ),
               Container(
                 child: Text(
@@ -230,7 +230,7 @@ class TowerDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DetailPageScaffold(
-      titleText: towerDetails.name,
+      titleText: towerDetails.place,
       child: _getTowerDetails(context, towerDetails),
     );
   }
