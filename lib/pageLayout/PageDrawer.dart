@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../routes/Routes.dart';
 
 class PageDrawer extends StatelessWidget {
@@ -6,48 +7,69 @@ class PageDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        children: <Widget>[
-          DrawerHeader(
-            child: Image(
-              image: AssetImage('images/Southall_Minster.jpg'),
-              fit: BoxFit.cover,
-            ),
-            padding: EdgeInsets.zero,
-          ),
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: Text('Home'),
-            onTap: () {
-              Navigator.popAndPushNamed(context, RoutesEnum.home);
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: const Icon(Icons.location_city),
-            title: Text('Towers'),
-            onTap: () {
-              Navigator.popAndPushNamed(context, RoutesEnum.towers);
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: const Icon(Icons.music_note),
-            title: Text('Performances'),
-            onTap: () {
-              Navigator.popAndPushNamed(context, RoutesEnum.performances);
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: const Icon(Icons.event),
-            title: Text('Events'),
-            onTap: () {
-              Navigator.popAndPushNamed(context, RoutesEnum.events);
-            },
-          ),
-          Divider(),
-        ],
+        children: _getDrawerOptions(context),
       ),
     );
+  }
+
+  DrawerHeader _getDrawerHeader() {
+    return DrawerHeader(
+      child: Image(
+        image: AssetImage('images/core/District_Main_Tower.jpg'),
+        fit: BoxFit.cover,
+      ),
+      padding: EdgeInsets.zero,
+    );
+  }
+
+  List<Widget> _getDrawerOptions(BuildContext context) {
+    final List<Widget> options = List<Widget>();
+
+    options.add(_getDrawerHeader());
+
+    options.addAll(_getMenuOption(
+      context,
+      'Home',
+      Icons.home,
+      RoutesEnum.home,
+    ));
+    options.addAll(_getMenuOption(
+      context,
+      'Towers',
+      Icons.location_city,
+      RoutesEnum.towers,
+    ));
+    options.addAll(_getMenuOption(
+      context,
+      'Performances',
+      Icons.music_note,
+      RoutesEnum.performances,
+    ));
+    options.addAll(_getMenuOption(
+      context,
+      'Events',
+      Icons.event,
+      RoutesEnum.events,
+    ));
+
+    return options;
+  }
+
+  List<Widget> _getMenuOption(
+    BuildContext context,
+    String title,
+    IconData icon,
+    String route,
+  ) {
+    return [
+      ListTile(
+        leading: Icon(icon),
+        title: Text(title),
+        onTap: () {
+          Navigator.popAndPushNamed(context, route);
+        },
+      ),
+      Divider(),
+    ];
   }
 }

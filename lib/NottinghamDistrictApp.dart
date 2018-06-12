@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'pages/Home.dart';
+import 'pages/home/Home.dart';
 import 'routes/Routes.dart';
 import 'settings/AppSettings.dart';
 

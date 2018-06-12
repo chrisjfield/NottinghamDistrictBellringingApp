@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../pages/Events.dart';
+import '../pages/events/Events.dart';
 import '../pages/Performances.dart';
 import '../pages/towers/Towers.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../pageLayout/PageScaffold.dart';
+
+import '../../pageLayout/PageScaffold.dart';
 
 class Events extends StatelessWidget {
   final Widget events = Center(

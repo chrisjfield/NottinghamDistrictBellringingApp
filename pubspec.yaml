@@ -17,4 +17,22 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/
+    - images/core/District_Logo.png
+    - images/core/District_Main_Tower.jpg
+    - images/towers/Arnold.jpg
+    - images/towers/Aspley.jpg
+    - images/towers/Attenborough.jpg
+    - images/towers/Basford.jpg
+    - images/towers/Beeston.jpg
+    - images/towers/Bramcote.jpg
+    - images/towers/Bulwell.jpg
+    - images/towers/Daybrook.jpg
+    - images/towers/Lenton.jpg
+    - images/towers/Nottingham_All_Saints.jpg
+    - images/towers/Nottingham_St_Marys.jpg
+    - images/towers/Nottingham_St_Peters.jpg
+    - images/towers/Nuthall.jpg
+    - images/towers/Stapleford.jpg
+    - images/towers/Trowell.jpg
+    - images/towers/West_Bridgeford.jpg
+    - images/towers/Wollaton.jpg
