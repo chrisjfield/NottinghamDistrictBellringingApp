@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'NottinghamDistrictApp.dart';
+import 'DistrictRingingApp.dart';
 
-void main() => runApp(NottinghamDistrictApp());
+void main() => runApp(DistrictRingingApp());
