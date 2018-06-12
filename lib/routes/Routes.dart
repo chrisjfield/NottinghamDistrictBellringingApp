@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../pages/Events.dart';
 import '../pages/Performances.dart';
-import '../pages/Towers.dart';
+import '../pages/towers/Towers.dart';
 
 class RoutesEnum {
   static const String home = "/";
