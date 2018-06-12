@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../models/TowerDetail.dart';
 import '../../pageLayout/PageScaffold.dart';
 import '../../settings/TowerList.dart';
-import '../TowerDetails.dart';
+import 'TowerDetails.dart';
 
 class Towers extends StatelessWidget {
   @override
