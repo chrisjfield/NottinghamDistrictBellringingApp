@@ -36,7 +36,7 @@ class Home extends StatelessWidget {
 
   Widget _getDescription() {
     return Padding(
-      padding: EdgeInsets.only(top: 30.0, left: 40.0, right: 20.0),
+      padding: EdgeInsets.only(top: 30.0, left: 40.0, right: 30.0),
       child: Text(
         AppSettings.homeDescription,
         style: TextStyle(
