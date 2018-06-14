@@ -44,6 +44,10 @@ class BellboardApi {
     return performances;
   }
 
+  void viewPerformance(String bellboardId) {
+    UrlHelper.launchURL(UrlHelper.parse('$_baseURL/view.php?id=$bellboardId'));
+  }
+
   Map<String, String> _getRequestHeaders() {
     final Map<String, String> headers = Map<String, String>();
     headers['Cache-Control'] = 'no-cache, must-revalidate, no-store';

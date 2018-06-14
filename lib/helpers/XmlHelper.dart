@@ -37,7 +37,7 @@ class XmlHelper {
       duration: _getXMLNodeValue(element, 'duration'),
       footnote: _getXMLNodeValue(element, 'footnote'),
       method: _getXMLNodeValue(element, 'method'),
-      place: '$place $dedication',
+      place: '$place, $dedication',
       ringers: _getRingers(element),
     );
   }

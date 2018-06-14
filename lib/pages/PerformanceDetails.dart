@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../DistrictRingingApp.dart';
 import '../pageLayout/DetailPageScaffold.dart';
 import '../models/PerformanceDetail.dart';
-import '../helpers/UrlHelper.dart';
 
 class PerformanceDetails extends StatelessWidget {
   final PerformanceDetail performanceDetails;
@@ -12,6 +12,8 @@ class PerformanceDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bbApi = DistrictInheritedWidget.of(context).bbApi;
+
     return DetailPageScaffold(
       titleText: "Details",
       child: Row(
@@ -24,23 +26,24 @@ class PerformanceDetails extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 10.0),
               ),
-              Text(performanceDetails.date),
-              Padding(
-                padding: EdgeInsets.only(top: 10.0),
-              ),
-              Text(performanceDetails.changes),
-              Padding(
-                padding: EdgeInsets.only(top: 10.0),
-              ),
-              Text(performanceDetails.duration),
-              Padding(
-                padding: EdgeInsets.only(top: 10.0),
-              ),
-              Text(performanceDetails.method),
-              Padding(
-                padding: EdgeInsets.only(top: 10.0),
-              ),
               Text(performanceDetails.place),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0),
+              ),
+              Row(
+                children: [
+                  Text(performanceDetails.date),
+                  Padding(
+                    padding: EdgeInsets.only(left: 40.0),
+                  ),
+                  Text(performanceDetails.duration),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0),
+              ),
+              Text(
+                  '${performanceDetails.changes} ${performanceDetails.method}'),
               Padding(
                 padding: EdgeInsets.only(top: 10.0),
               ),
@@ -60,12 +63,9 @@ class PerformanceDetails extends StatelessWidget {
                 padding: EdgeInsets.only(top: 10.0),
               ),
               RaisedButton(
-                onPressed: () {
-                  UrlHelper.launchURL(
-                      "https://bb.ringingworld.co.uk/view.php?id=" +
-                          performanceDetails.bellboardId);
-                },
-                child: Text("Go to Bellboard"),
+                onPressed: () =>
+                    bbApi.viewPerformance(performanceDetails.bellboardId),
+                child: Text("View On Bellboard"),
               ),
             ],
           ),
