@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../pageLayout/DetailPageScaffold.dart';
 import '../models/PerformanceDetail.dart';
+import '../helpers/UrlHelper.dart';
 
 class PerformanceDetails extends StatelessWidget {
   final PerformanceDetail performanceDetails;
 
   PerformanceDetails({Key key, @required this.performanceDetails})
       : super(key: key);
-
-  _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +61,9 @@ class PerformanceDetails extends StatelessWidget {
               ),
               RaisedButton(
                 onPressed: () {
-                  _launchURL("https://bb.ringingworld.co.uk/view.php?id=" +
-                      performanceDetails.bellboardId);
+                  UrlHelper.launchURL(
+                      "https://bb.ringingworld.co.uk/view.php?id=" +
+                          performanceDetails.bellboardId);
                 },
                 child: Text("Go to Bellboard"),
               ),

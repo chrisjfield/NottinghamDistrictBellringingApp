@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../pages/events/Events.dart';
-import '../pages/Performances.dart';
+import '../pages/performances/Performances.dart';
 import '../pages/towers/Towers.dart';
 
 class RoutesEnum {

@@ -1,5 +1,2 @@
-try to use rsdart
-next ringing time on towers list?
-distance to tower on towers list?
-Contact details on tower detail page?
-only show buttons if stuff exists on tower detail page?
+split out loading and app state into an app area
+see if I can make changing icons and splash screens easier (package?)
