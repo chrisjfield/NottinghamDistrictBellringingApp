@@ -48,6 +48,56 @@ class PerformancesState extends State<StatefulWidget> {
     });
   }
 
+  ListTile _getListTime(BellboardApi bbApi, int index) {
+    final Widget finalTile =
+        _loading ? CircularProgressIndicator() : Text("View More");
+
+    if (index < _performances.length) {
+      return _getPerformanceTile(index);
+    } else {
+      return ListTile(
+          title: Center(
+            child: finalTile,
+          ),
+          onTap: () => _getMorePerformances(bbApi));
+    }
+  }
+
+  Widget _getLoadingPage() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(),
+          ],
+        )
+      ],
+    );
+  }
+
+  _getMorePerformances(BellboardApi bbApi) {
+    setState(() {
+      _loading = true;
+    });
+    fetchPerformances(bbApi: bbApi);
+  }
+
+  _getPerformaceWidget(BellboardApi bbApi) {
+    if (_pageNumber == 1) {
+      return _getLoadingPage();
+    } else if (_performances.length == 0) {
+      return Text("No performaces to show");
+    } else {
+      return ListView.builder(
+        itemBuilder: (BuildContext context, int index) =>
+            _getListTime(bbApi, index),
+        itemCount: _performances.length + 1,
+      );
+    }
+  }
+
   ListTile _getPerformanceTile(int index) {
     return ListTile(
       title: Text(_performances[index].place),
@@ -72,56 +122,6 @@ class PerformancesState extends State<StatefulWidget> {
         );
       },
     );
-  }
-
-  ListTile _getListTime(BellboardApi bbApi, int index) {
-    final Widget finalTile =
-        _loading ? CircularProgressIndicator() : Text("View More");
-
-    if (index < _performances.length) {
-      return _getPerformanceTile(index);
-    } else {
-      return ListTile(
-          title: Center(
-            child: finalTile,
-          ),
-          onTap: () => _getMorePerformances(bbApi));
-    }
-  }
-
-  _getMorePerformances(BellboardApi bbApi) {
-    setState(() {
-      _loading = true;
-    });
-    fetchPerformances(bbApi: bbApi);
-  }
-
-  Widget _getLoadingPage() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircularProgressIndicator(),
-          ],
-        )
-      ],
-    );
-  }
-
-  _getPerformaceWidget(BellboardApi bbApi) {
-    if (_pageNumber == 1) {
-      return _getLoadingPage();
-    } else if (_performances.length == 0) {
-      return Text("No performaces to show");
-    } else {
-      return ListView.builder(
-        itemBuilder: (BuildContext context, int index) =>
-            _getListTime(bbApi, index),
-        itemCount: _performances.length + 1,
-      );
-    }
   }
 
   Future<Null> _refresh(BellboardApi bbApi) async {
