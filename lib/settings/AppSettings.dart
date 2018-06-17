@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppSettings {
   static const String appTitle = 'Nottingham District';
-  static const String homeTitleLine1 = 'Nottingham District';
-  static const String homeTitleLine2 = 'Bellringing';
+  static const String homeTitle = 'Nottingham District Bellringing';
   static const String homeDescription = '''
   Welcome to the app for bellringing in the Nottingham district of the Southwell & Nottingham Guild. 
 

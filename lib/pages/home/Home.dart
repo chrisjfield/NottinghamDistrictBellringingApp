@@ -26,9 +26,16 @@ class Home extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          text,
-          style: Theme.of(context).textTheme.display1,
+        Flexible(
+          child: Container(
+            child: Text(
+              text,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.display1,
+            ),
+          ),
         ),
       ],
     );
@@ -52,8 +59,7 @@ class Home extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           _getLogo(),
-          _getTitleRow(context, AppSettings.homeTitleLine1),
-          _getTitleRow(context, AppSettings.homeTitleLine2),
+          _getTitleRow(context, AppSettings.homeTitle),
           _getDescription(),
         ],
       ),
