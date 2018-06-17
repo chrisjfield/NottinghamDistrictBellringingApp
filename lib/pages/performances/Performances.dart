@@ -7,7 +7,7 @@ import '../../DistrictRingingApp.dart';
 import '../../helpers/BellboardApi.dart';
 import '../../models/PerformanceDetail.dart';
 import '../../pageLayout/PageScaffold.dart';
-import '../PerformanceDetails.dart';
+import 'PerformanceDetails.dart';
 
 class Performances extends StatefulWidget {
   @override

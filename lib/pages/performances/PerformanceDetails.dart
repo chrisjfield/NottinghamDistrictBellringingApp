@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../DistrictRingingApp.dart';
-import '../helpers/BellboardApi.dart';
-import '../models/PerformanceDetail.dart';
-import '../pageLayout/DetailPageScaffold.dart';
+import '../../DistrictRingingApp.dart';
+import '../../helpers/BellboardApi.dart';
+import '../../models/PerformanceDetail.dart';
+import '../../pageLayout/DetailPageScaffold.dart';
 
 class PerformanceDetails extends StatelessWidget {
   final PerformanceDetail performanceDetails;
