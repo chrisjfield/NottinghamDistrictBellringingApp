@@ -1,2 +1,13 @@
-split out loading and app state into an app area
-see if I can make changing icons and splash screens easier (package?)
+refactor to use the helper files
+put APi in its own folder
+split out the state
+see if I can make changing splash screens easier (package?)
+
+add push notifications
+change ui
+change logo to be the green one
+facebook and website links on home page?
+
+add unit tests - mock bellboard api - mockitto
+
+create a good read me

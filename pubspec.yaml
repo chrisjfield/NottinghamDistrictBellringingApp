@@ -10,11 +10,17 @@ dependencies:
   xml: "^3.0.0"
   intl: "^0.15.6"
   path_provider: "^0.4.1"
+  flutter_launcher_icons: "^0.5.0"
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   lcov: "^4.0.0"
+
+flutter_icons:
+  android: true 
+  ios: true
+  image_path: 'images/core/launcher.png'
 
 flutter:
   uses-material-design: true
@@ -22,6 +28,7 @@ flutter:
     - images/core/bellringing_logo.png
     - images/core/District_Logo.png
     - images/core/District_Main_Tower.jpg
+    - images/core/launcher.png
     - images/towers/Arnold.jpg
     - images/towers/Aspley.jpg
     - images/towers/Attenborough.jpg
