@@ -6,41 +6,51 @@ class EventList {
       title: 'Bob Doubles Workshop',
       startTime: DateTime(2018, 7, 7, 10),
       location: 'Arnold',
-      description: '',
+      description:
+          '''If you can already reliably ring the treble to Plain Bob Doubles or Minor,'''
+          ''' or have started to ring Bob Doubles and want some practice then this is for you.''',
       endTime: DateTime(2018, 7, 7, 12),
       dedication: 'S Mary',
       postcode: 'NG5 8HG',
-      doveid: 'ARNOLD',
-      posterLink: '',
+      doveId: 'ARNOLD',
     ),
     EventDetail(
       title: 'Bob Triples Workshop',
       startTime: DateTime(2018, 7, 7, 10),
       location: 'Attenborough',
-      description: '',
+      description:
+          '''This event is for those who want to move on from Plain Bob Minor'''
+          '''or Trebling on 7 or 8 and those wanting to practice Plain Bob Triples or Major.''',
       endTime: DateTime(2018, 7, 7, 12),
       dedication: 'S Mary V',
       postcode: 'NG9 6AS',
-      doveid: 'ATTENBOROU',
-      posterLink: '',
+      doveId: 'ATTENBOROU',
     ),
     EventDetail(
       title: 'Tower Practise',
       startTime: DateTime(2018, 8, 6, 19, 30),
       location: 'Aspley',
-      description: '',
+      description: '''
+      Ringers of all abilities are welcome
+
+Want to try something new?
+
+If you would like to try ringing something new or different, take a look at one (or more) of these:
+
+Plain Bob Doubles
+Stedman
+Double Norwich Court Bob
+''',
       endTime: DateTime(2018, 8, 6, 21),
       dedication: 'S Margaret',
       postcode: 'NG8 5JB',
-      doveid: 'NOTTINGMAS',
-      posterLink: '',
+      doveId: 'NOTTINGMAS',
     ),
     EventDetail(
       title: 'Mini Outing',
       startTime: DateTime(2018, 9, 8, 10),
       location: 'Unknown',
       description: '',
-      posterLink: '',
     ),
     EventDetail(
       title: 'District Meeting and Barn Dance',
@@ -50,8 +60,7 @@ class EventList {
       endTime: DateTime(2018, 10, 6, 22),
       dedication: 'S Patrick',
       postcode: 'NG16 1DT',
-      doveid: 'NUTHALL',
-      posterLink: '',
+      doveId: 'NUTHALL',
     ),
     EventDetail(
       title: 'District Meeting',
@@ -61,8 +70,7 @@ class EventList {
       endTime: DateTime(2018, 11, 3, 17, 00),
       dedication: 'All Saints',
       postcode: 'NG7 4DL',
-      doveid: 'NOTTINGM+A',
-      posterLink: '',
+      doveId: 'NOTTINGM+A',
     ),
     EventDetail(
       title: 'District Meeting and Mince Pies',
@@ -72,8 +80,7 @@ class EventList {
       endTime: DateTime(2018, 12, 1, 18),
       dedication: 'S John Bapt',
       postcode: 'NG9 2JJ',
-      doveid: 'BEESTON',
-      posterLink: '',
+      doveId: 'BEESTON',
     ),
     EventDetail(
       title: 'District Meeting and AGM',
@@ -83,8 +90,7 @@ class EventList {
       endTime: DateTime(2019, 1, 12, 18),
       dedication: 'S Paul',
       postcode: 'NG5 6HW',
-      doveid: 'DAYBROOK',
-      posterLink: '',
+      doveId: 'DAYBROOK',
     ),
     EventDetail(
       title: 'District Meeting',
@@ -94,8 +100,7 @@ class EventList {
       endTime: DateTime(2019, 2, 2, 17),
       dedication: 'S Mary V',
       postcode: 'NG1 1PZ',
-      doveid: 'NOTTINGM+M',
-      posterLink: '',
+      doveId: 'NOTTINGM+M',
     ),
     EventDetail(
       title: 'Crawford Cup Heat',
@@ -105,8 +110,7 @@ class EventList {
       endTime: DateTime(2019, 3, 9, 19),
       dedication: 'S Mary V',
       postcode: 'NG9 6AS',
-      doveid: 'ATTENBOROU',
-      posterLink: '',
+      doveId: 'ATTENBOROU',
     ),
   ];
 }

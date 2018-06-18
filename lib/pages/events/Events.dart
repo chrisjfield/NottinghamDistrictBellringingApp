@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
+import '../../helpers/DateHelper.dart';
 import '../../models/EventDetail.dart';
 import '../../pageLayout/PageScaffold.dart';
 import '../../settings/EventList.dart';
@@ -31,10 +31,10 @@ class Events extends StatelessWidget {
         .toList()[index];
 
     final String location = event.location;
-    String eventTime = DateFormat.Hm().format(event.startTime);
+    String eventTime = DateHelper.timeFromDateTime(event.startTime);
 
     if (event.endTime != null) {
-      final String eventEndTime = DateFormat.Hm().format(event.endTime);
+      final String eventEndTime = DateHelper.timeFromDateTime(event.endTime);
       eventTime += '-$eventEndTime';
     }
 
@@ -42,7 +42,7 @@ class Events extends StatelessWidget {
       title: Text(event.title),
       subtitle: Text('$location, $eventTime'),
       leading: Text(
-        DateFormat.MMMd("en_US").format(event.startTime),
+        DateHelper.dateFromDateTime(event.startTime),
         style: TextStyle(
           fontSize: 12.0,
         ),

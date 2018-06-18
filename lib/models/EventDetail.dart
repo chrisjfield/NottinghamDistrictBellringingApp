@@ -8,8 +8,7 @@ class EventDetail {
   final DateTime endTime;
   final String dedication;
   final String postcode;
-  final String doveid;
-  final String posterLink;
+  final String doveId;
 
   EventDetail({
     @required this.title,
@@ -19,7 +18,6 @@ class EventDetail {
     this.endTime,
     this.dedication,
     this.postcode,
-    this.doveid,
-    this.posterLink,
+    this.doveId,
   });
 }

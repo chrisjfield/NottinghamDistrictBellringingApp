@@ -9,6 +9,7 @@ dependencies:
   http: "^0.11.3+16"
   xml: "^3.0.0"
   intl: "^0.15.6"
+  path_provider: "^0.4.1"
 
 dev_dependencies:
   flutter_test:
@@ -18,6 +19,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - images/core/bellringing_logo.png
     - images/core/District_Logo.png
     - images/core/District_Main_Tower.jpg
     - images/towers/Arnold.jpg
