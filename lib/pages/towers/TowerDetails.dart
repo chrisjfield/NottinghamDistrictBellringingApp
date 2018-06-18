@@ -12,7 +12,7 @@ class TowerDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DetailPageScaffold(
-      titleText: towerDetails.place,
+      titleText: "Tower Details",
       child: _getTowerDetails(context, towerDetails),
     );
   }

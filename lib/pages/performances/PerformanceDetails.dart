@@ -23,7 +23,7 @@ class PerformanceDetails extends StatelessWidget {
         .trimRight();
 
     return DetailPageScaffold(
-      titleText: "Details",
+      titleText: "Performance Details",
       child: Padding(
         padding: EdgeInsets.all(20.0),
         child: Column(
