@@ -68,12 +68,9 @@ class EventDetails extends StatelessWidget {
       padding: EdgeInsets.all(20.0),
       child: Column(
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.only(right: 15.0),
-            child: Image.asset(
-              'images/core/bellringing_logo.png',
-              height: 100.0,
-            ),
+          Image.asset(
+            'images/core/bellringing_logo.png',
+            height: 100.0,
           ),
           TextHelper.textRowHeading(text: eventDetails.title, topPadding: 10.0),
           TextHelper.textRowSubHeading(text: '$location', topPadding: 10.0),

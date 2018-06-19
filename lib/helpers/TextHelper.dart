@@ -105,7 +105,7 @@ class TextHelper {
     }
 
     return Padding(
-      padding: EdgeInsets.only(top: topPadding, left: leftPadding, right: 20.0),
+      padding: EdgeInsets.only(top: topPadding, left: leftPadding),
       child: Row(
         mainAxisAlignment: allignment,
         children: [
