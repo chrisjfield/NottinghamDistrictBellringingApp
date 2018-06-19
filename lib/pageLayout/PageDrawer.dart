@@ -23,7 +23,7 @@ class PageDrawer extends StatelessWidget {
   }
 
   List<Widget> _getDrawerOptions(BuildContext context) {
-    final List<Widget> options = List<Widget>();
+    final List<Widget> options = [];
 
     options.add(_getDrawerHeader());
 

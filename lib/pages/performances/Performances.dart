@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../DistrictRingingApp.dart';
-import '../../helpers/BellboardApi.dart';
+import '../../api/BellboardApi.dart';
+import '../../helpers/DateHelper.dart';
 import '../../models/PerformanceDetail.dart';
 import '../../pageLayout/PageScaffold.dart';
 import 'PerformanceDetails.dart';
@@ -15,7 +15,7 @@ class Performances extends StatefulWidget {
 }
 
 class PerformancesState extends State<StatefulWidget> {
-  final List<PerformanceDetail> _performances = List<PerformanceDetail>();
+  final List<PerformanceDetail> _performances = [];
   int _pageNumber = 1;
   bool _loading = false;
 
@@ -104,23 +104,23 @@ class PerformancesState extends State<StatefulWidget> {
       subtitle: Text(
           '${_performances[index].changes} ${_performances[index].method}'),
       leading: Text(
-        DateFormat
-            .MMMd("en_US")
-            .format(DateTime.parse(_performances[index].date)),
+        DateHelper.dateFromDateString(_performances[index].date),
         style: TextStyle(
           fontSize: 12.0,
         ),
       ),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => PerformanceDetails(
-                  performanceDetails: _performances[index],
-                ),
-          ),
-        );
-      },
+      onTap: () => _navigateToDetailPage(context, _performances[index]),
+    );
+  }
+
+  void _navigateToDetailPage(
+      BuildContext context, PerformanceDetail performance) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            PerformanceDetails(performanceDetails: performance),
+      ),
     );
   }
 

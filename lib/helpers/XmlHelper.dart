@@ -8,7 +8,7 @@ import '../models/PerformanceDetail.dart';
 class XmlHelper {
   static List<PerformanceDetail> convertResponseToPerformanceList(
       Response apiResponse) {
-    final List<PerformanceDetail> performances = List<PerformanceDetail>();
+    final List<PerformanceDetail> performances = [];
 
     final String returnXml = utf8.decode(apiResponse.bodyBytes);
     final XmlDocument document = parse(returnXml);
@@ -56,7 +56,7 @@ class XmlHelper {
   }
 
   static List<String> _getRingers(XmlElement element) {
-    List<String> ringers = List<String>();
+    List<String> ringers = [];
 
     element.findAllElements('ringer').forEach((ringer) => ringers.add(
           _getRinger(ringer),

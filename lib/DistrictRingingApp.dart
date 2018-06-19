@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'helpers/BellboardApi.dart';
+import 'api/BellboardApi.dart';
 import 'pages/home/Home.dart';
 import 'routes/Routes.dart';
 import 'settings/AppSettings.dart';

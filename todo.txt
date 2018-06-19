@@ -1,12 +1,6 @@
-refactor to use the helper files
-put APi in its own folder
-split out the state
-see if I can make changing splash screens easier (package?)
-
 add push notifications
-change ui
 change logo to be the green one
-facebook and website links on home page?
+change ui
 
 add unit tests - mock bellboard api - mockitto
 

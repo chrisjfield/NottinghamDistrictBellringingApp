@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class AppSettings {
   static const String appTitle = 'Nottingham District';
   static const String homeTitle = 'Nottingham District Bellringing';
-  static const String homeDescription = '''
-  Welcome to the app for bellringing in the Nottingham district of the Southwell & Nottingham Guild. 
-
-  You will find information on towers, recent performaces and upcoming events.
-  ''';
+  static const String districtWebiste =
+      'https://www.southwelldg.org.uk/pages/district_main.php?district=5';
+  static const String districtFacebook =
+      'https://www.facebook.com/groups/513974708681458/';
+  static const String homeDescription =
+      'Welcome to the Nottingham district ringing app!\n\n Look around or contact us using the links below.';
 
   static final ThemeData themeData = ThemeData(
     primarySwatch: Colors.blue,

@@ -4,8 +4,8 @@ import 'package:http/http.dart';
 
 import '../models/PerformanceDetail.dart';
 import '../settings/TowerList.dart';
-import 'UrlHelper.dart';
-import 'XmlHelper.dart';
+import '../helpers/UrlHelper.dart';
+import '../helpers/XmlHelper.dart';
 
 class BellboardApi {
   static const String _baseURL = 'https://bb.ringingworld.co.uk';

@@ -11,6 +11,16 @@ class DateHelper {
     return DateFormat.MMMd().format(date);
   }
 
+  static String fullDateFromDateString(String date) {
+    final DateTime parsedDate = DateTime.parse(date);
+
+    return fullDateFromDateTime(parsedDate);
+  }
+
+  static String fullDateFromDateTime(DateTime date) {
+    return DateFormat.yMMMMd().format(date);
+  }
+
   static String timeFromDateString(String date) {
     final DateTime parsedDate = DateTime.parse(date);
 

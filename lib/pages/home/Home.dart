@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../settings/AppSettings.dart';
+import '../../helpers/ButtonHelper.dart';
+import '../../helpers/TextHelper.dart';
 import '../../pageLayout/PageScaffold.dart';
+import '../../settings/AppSettings.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -9,6 +12,40 @@ class Home extends StatelessWidget {
     return PageScaffold(
       titleText: 'Home',
       child: _getHome(context),
+    );
+  }
+
+  Widget _getContactLinks(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ButtonHelper.createButton(
+              context,
+              'FACEBOOK',
+              FontAwesomeIcons.facebookSquare,
+              AppSettings.districtFacebook,
+              true),
+          ButtonHelper.createButton(context, 'WEBSITE', Icons.language,
+              AppSettings.districtWebiste, true)
+        ],
+      ),
+    );
+  }
+
+  Widget _getHome(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: 20.0, right: 20.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          _getLogo(),
+          _getTitleRow(context, AppSettings.homeTitle),
+          TextHelper.textRowCenteredLarge(
+              text: AppSettings.homeDescription, topPadding: 5.0),
+          _getContactLinks(context),
+        ],
+      ),
     );
   }
 
@@ -38,31 +75,6 @@ class Home extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-
-  Widget _getDescription() {
-    return Padding(
-      padding: EdgeInsets.only(top: 30.0, left: 40.0, right: 30.0),
-      child: Text(
-        AppSettings.homeDescription,
-        style: TextStyle(
-          fontSize: 16.0,
-        ),
-      ),
-    );
-  }
-
-  Widget _getHome(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          _getLogo(),
-          _getTitleRow(context, AppSettings.homeTitle),
-          _getDescription(),
-        ],
-      ),
     );
   }
 }
