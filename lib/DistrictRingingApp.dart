@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'api/BellboardApi.dart';
+import 'api/NotificationsApi.dart';
 import 'pages/home/Home.dart';
 import 'routes/Routes.dart';
 import 'settings/AppSettings.dart';
 
 class DistrictInheritedWidget extends InheritedWidget {
   final BellboardApi bbApi;
+  final NotificationsAPI notificationsAPI;
 
-  const DistrictInheritedWidget({Key key, this.bbApi, Widget child})
+  const DistrictInheritedWidget(
+      {Key key, this.bbApi, this.notificationsAPI, Widget child})
       : super(key: key, child: child);
 
   @override
@@ -25,11 +28,13 @@ class DistrictRingingApp extends StatefulWidget {
 
 class DistrictRingingAppState extends State<DistrictRingingApp> {
   final BellboardApi bbApi = BellboardApi();
+  final NotificationsAPI notificationsAPI = NotificationsAPI();
 
   @override
   Widget build(BuildContext context) {
     return DistrictInheritedWidget(
       bbApi: bbApi,
+      notificationsAPI: notificationsAPI,
       child: RingingApp(),
     );
   }

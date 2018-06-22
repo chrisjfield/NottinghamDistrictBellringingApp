@@ -3,6 +3,7 @@ import '../models/EventDetail.dart';
 class EventList {
   static final List<EventDetail> eventList = [
     EventDetail(
+      eventID: 1,
       title: 'Bob Doubles Workshop',
       startTime: DateTime(2018, 7, 7, 10),
       location: 'Arnold',
@@ -15,6 +16,7 @@ class EventList {
       doveId: 'ARNOLD',
     ),
     EventDetail(
+      eventID: 2,
       title: 'Bob Triples Workshop',
       startTime: DateTime(2018, 7, 7, 10),
       location: 'Attenborough',
@@ -27,6 +29,7 @@ class EventList {
       doveId: 'ATTENBOROU',
     ),
     EventDetail(
+      eventID: 3,
       title: 'Tower Practise',
       startTime: DateTime(2018, 8, 6, 19, 30),
       location: 'Aspley',
@@ -47,12 +50,14 @@ Double Norwich Court Bob
       doveId: 'NOTTINGMAS',
     ),
     EventDetail(
+      eventID: 4,
       title: 'Mini Outing',
       startTime: DateTime(2018, 9, 8, 10),
       location: 'Unknown',
       description: '',
     ),
     EventDetail(
+      eventID: 5,
       title: 'District Meeting and Barn Dance',
       startTime: DateTime(2018, 10, 6, 16, 30),
       location: 'Nuthall',
@@ -63,6 +68,7 @@ Double Norwich Court Bob
       doveId: 'NUTHALL',
     ),
     EventDetail(
+      eventID: 6,
       title: 'District Meeting',
       startTime: DateTime(2018, 11, 3, 15, 30),
       location: 'Nottingham',
@@ -73,6 +79,7 @@ Double Norwich Court Bob
       doveId: 'NOTTINGM+A',
     ),
     EventDetail(
+      eventID: 7,
       title: 'District Meeting and Mince Pies',
       startTime: DateTime(2018, 12, 1, 16),
       location: 'Beeston',
@@ -83,6 +90,7 @@ Double Norwich Court Bob
       doveId: 'BEESTON',
     ),
     EventDetail(
+      eventID: 8,
       title: 'District Meeting and AGM',
       startTime: DateTime(2019, 1, 12, 15),
       location: 'Daybrook',
@@ -93,6 +101,7 @@ Double Norwich Court Bob
       doveId: 'DAYBROOK',
     ),
     EventDetail(
+      eventID: 9,
       title: 'District Meeting',
       startTime: DateTime(2019, 2, 2, 15),
       location: 'Nottingham',
@@ -103,6 +112,7 @@ Double Norwich Court Bob
       doveId: 'NOTTINGM+M',
     ),
     EventDetail(
+      eventID: 10,
       title: 'Crawford Cup Heat',
       startTime: DateTime(2019, 3, 9, 14, 30),
       location: 'Attenborough',
