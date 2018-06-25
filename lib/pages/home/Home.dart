@@ -6,7 +6,6 @@ import '../../helpers/ButtonHelper.dart';
 import '../../helpers/TextHelper.dart';
 import '../../pageLayout/PageScaffold.dart';
 import '../../settings/AppSettings.dart';
-import '../../settings/EventList.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -14,7 +13,8 @@ class Home extends StatelessWidget {
     final notificationsAPI =
         DistrictInheritedWidget.of(context).notificationsAPI;
     notificationsAPI.initialise(context);
-    notificationsAPI.showNotification(EventList.eventList[2]);
+    notificationsAPI.createNotifications();
+
     return PageScaffold(
       titleText: 'Home',
       child: _getHome(context),

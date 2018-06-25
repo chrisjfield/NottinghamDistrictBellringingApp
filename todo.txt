@@ -1,4 +1,3 @@
-add push notifications
 change logo to be the green one
 change ui
 
