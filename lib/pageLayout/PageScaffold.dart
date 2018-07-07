@@ -15,8 +15,10 @@ class PageScaffold extends StatelessWidget {
       drawer: PageDrawer(),
       appBar: AppBar(
         title: Text(titleText),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: child,
+      backgroundColor: Theme.of(context).backgroundColor,
     );
   }
 }

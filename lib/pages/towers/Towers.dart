@@ -22,8 +22,10 @@ class Towers extends StatelessWidget {
       title: Text(title),
       leading: CircleAvatar(
         backgroundColor: Theme.of(context).accentColor,
-        foregroundColor: Theme.of(context).primaryColorDark,
-        child: Text(tower.numberOfBells),
+        child: Text(
+          tower.numberOfBells,
+          style: TextStyle(color: Theme.of(context).primaryColorDark),
+        ),
       ),
       onTap: () => _navigateToDetailPage(context, tower),
     );

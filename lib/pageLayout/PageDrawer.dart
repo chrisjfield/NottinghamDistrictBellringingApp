@@ -6,8 +6,11 @@ class PageDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        children: _getDrawerOptions(context),
+      child: Container(
+        color: Theme.of(context).backgroundColor,
+        child: ListView(
+          children: _getDrawerOptions(context),
+        ),
       ),
     );
   }

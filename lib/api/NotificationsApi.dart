@@ -45,6 +45,8 @@ class NotificationsAPI {
           .where((event) =>
               event.startTime.isAfter(DateTime.now().add(Duration(days: 1))))
           .forEach((event) => _setEventNotification(event));
+
+      _notificationsSet = true;
     }
   }
 

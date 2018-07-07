@@ -11,8 +11,12 @@ class AppSettings {
       'Welcome to the Nottingham district ringing app!\n\n Look around or contact us using the links below.';
 
   static final ThemeData themeData = ThemeData(
-    primarySwatch: Colors.blue,
-    primaryColorDark: Colors.black,
-    accentColor: Colors.purpleAccent,
+    primaryColor: Colors.green[800],
+    primaryColorDark: Color(0xFF1B5E20),
+    accentColor: Color(0xFF9E9E9E),
+    backgroundColor: Color(0xFFEFEBE9),
+    primaryIconTheme: IconThemeData(
+      color: Color(0xFFFFFFFF),
+    ),
   );
 }

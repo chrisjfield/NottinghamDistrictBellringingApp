@@ -5,7 +5,7 @@ import 'UrlHelper.dart';
 class ButtonHelper {
   static Column createButton(BuildContext context, String buttonText,
       IconData icon, String url, bool urlNeedsParsing) {
-    Color color = Theme.of(context).primaryColor;
+    Color color = Theme.of(context).accentColor;
 
     String parsedUrl = urlNeedsParsing ? UrlHelper.parse(url) : url;
 

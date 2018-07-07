@@ -12,8 +12,10 @@ class DetailPageScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(titleText),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: child,
+      backgroundColor: Theme.of(context).backgroundColor,
     );
   }
 }

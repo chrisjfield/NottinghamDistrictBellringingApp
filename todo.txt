@@ -1,6 +1,3 @@
-change logo to be the green one
-change ui
-
 add unit tests - mock bellboard api - mockitto
 
 create a good read me
