@@ -1,4 +1,4 @@
-package com.example.nottsdistrictapp;
+package com.nottsdistrictapp;
 
 import android.os.Bundle;
 

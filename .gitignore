@@ -9,3 +9,5 @@ build/
 .flutter-plugins
 .vscode
 .idea
+/android/app/key.jks
+/android/app/key.properties
