@@ -163,7 +163,7 @@ Mince Pies and mulled wine to follow the ringing.
       startTime: DateTime(2020, 1, 11, 15),
       location: 'Bramcote',
       description: '''Ringing and a service followed by the AGM and a tea.
-      
+
 Names for tea needed nearer the time.
 ''',
       endTime: DateTime(2020, 1, 11, 16, 30),
